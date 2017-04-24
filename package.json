@@ -1,0 +1,22 @@
+{
+  "name": "studywise",
+  "version": "1.0.0",
+  "description": "this is an web applocation to make students life easier",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DebOM/my-MVP-project-at-Hack-Reactor.git"
+  },
+  "author": "debasish mozumder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DebOM/my-MVP-project-at-Hack-Reactor/issues"
+  },
+  "homepage": "https://github.com/DebOM/my-MVP-project-at-Hack-Reactor#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
