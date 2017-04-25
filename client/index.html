@@ -3,10 +3,84 @@
 <html>
 <head>
   <title>welcome to studyWise</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
-<body>
+
+
+<body ng-app="myNotes">
 <h1>StUdyWiSE</h1>
   <p>Welcome to studyWise. Please add your accomplishments for today!!!</p>
-  <button type="button">All Notes!</button>
+
+<!--search all notes-->
+
+<div ng-controller='myCtrl' >
+    <button ng-click="makeRequest()"> View All Notes </button>
+    <p>{{noteList}}</p>
+</div>
+
+<div ng-controller='noteCtrl' >
+
+    <textarea ng-model='addNote'></textarea>
+    <button ng-click= 'addingNote()'> Add Note </button>
+</div>
+
+<!-- <div ng-app='newNote', ng-controller='noteCtrl'>
+
+</div> -->
+<!-- add A note-->
+
+
+<script>
+var myNotes = angular.module('myNotes', []);
+myNotes.controller('myCtrl', function($scope, $http) {
+  $scope.makeRequest = function() {
+    console.log('clicked')
+    $http.get("/notes")
+    .then(function(response) {
+      $scope.noteList = response.data.noteName + ": " + response.data.note;
+    });
+  }
+});
+
+myNotes.controller('noteCtrl', function($scope, $http){
+  console.log('inside newNote');
+  $scope.addingNote = function(){
+    console.log("adding note function!!");
+    // console.log($scope.addNote);
+    // $scope.addNote = "adding Notes"
+    $http.post("/notes", {note: $scope.addNote})
+
+    .then(function(response){
+      // console.log(response);
+    })
+  }
+  })
+
+
+// var newNote = angular.module('newNote', []);
+// newNote.controller('noteCtrl', function($scope, $http){
+//   console.log('inside newNote');
+//   $scope.addingNote = function(){
+//     console.log("adding note function!!");
+//     $http.post("/notes", {note: $scope.addNote})
+//     .then(function(response){
+//       console.log(response);
+//     })
+//   }
+// })
+
+  //     $http.post('http://localhost:6464/')
+  //     // JSON.stringify($scope.pokemonName))
+  //     .then(function(response){
+  //              console.log(response);
+  //             }, function(error) {
+  //              console.log(error);
+  //             });
+  //
+  //
+  // });
+</script>
+
+
 </body>
 </html>

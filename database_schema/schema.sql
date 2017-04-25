@@ -17,10 +17,10 @@ use studywise;
 DROP TABLE IF EXISTS notes;
 
 CREATE TABLE notes (
-  id INT(20) NOT NULL,
-  name VARCHAR(20) NOT NULL,
+  -- id INT(20) NOT NULL,
+  name VARCHAR(20),
   note MEDIUMTEXT,
-  PRIMARY KEY (id)
+  PRIMARY KEY (name)
 );
 
 -- ---
