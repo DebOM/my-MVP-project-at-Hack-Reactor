@@ -4,25 +4,68 @@
 <head>
   <title>welcome to studyWise</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <style>
+
+    h1{
+
+    }
+    body{
+      background-color: lightblue;
+      width: 100%;  
+    }
+    button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    }
+
+    textarea {
+    height: 10em !important;
+    width: 50em !important;
+    font-size: 18px;
+    width: 100%;
+    }
+
+    ul {
+      list-style-type: none !important;
+      font-size: 30px !important;
+    }
+
+  </style>
 </head>
 
 
 <body ng-app="myNotes">
-<h1>StUdyWiSE</h1>
-  <p>Welcome to studyWise. Please add your accomplishments for today!!!</p>
+  <div class="container">
+  <h1>StUdyWiSE</h1>
+    <p>Welcome to studyWise. Please add your accomplishments for today!!!</p>
 
-<!--search all notes-->
+  <!--search all notes-->
 
-<div ng-controller='myCtrl' >
-    <button ng-click="makeRequest()"> View All Notes </button>
-    <p>{{noteList}}</p>
+  <span ng-controller='noteCtrl' >
+      <textarea class="textfield" ng-model='addNote'></textarea>
+    </br>
+      <button ng-click='addingNote()'> Add Note </button>
+  </span>
+
+
+
+  <span ng-controller='myCtrl' >
+      <button ng-click="makeRequest()"> View All Notes </button>
+      <ul>
+        <li ng-repeat="x in noteList">
+          {{x.note}}
+      </li>
+    </ul>
+  </span>
 </div>
 
-<div ng-controller='noteCtrl' >
 
-    <textarea ng-model='addNote'></textarea>
-    <button ng-click= 'addingNote()'> Add Note </button>
-</div>
 
 <!-- <div ng-app='newNote', ng-controller='noteCtrl'>
 
@@ -37,7 +80,7 @@ myNotes.controller('myCtrl', function($scope, $http) {
     console.log('clicked')
     $http.get("/notes")
     .then(function(response) {
-      $scope.noteList = response.data.noteName + ": " + response.data.note;
+      $scope.noteList = response.data;
     });
   }
 });
@@ -56,29 +99,6 @@ myNotes.controller('noteCtrl', function($scope, $http){
   }
   })
 
-
-// var newNote = angular.module('newNote', []);
-// newNote.controller('noteCtrl', function($scope, $http){
-//   console.log('inside newNote');
-//   $scope.addingNote = function(){
-//     console.log("adding note function!!");
-//     $http.post("/notes", {note: $scope.addNote})
-//     .then(function(response){
-//       console.log(response);
-//     })
-//   }
-// })
-
-  //     $http.post('http://localhost:6464/')
-  //     // JSON.stringify($scope.pokemonName))
-  //     .then(function(response){
-  //              console.log(response);
-  //             }, function(error) {
-  //              console.log(error);
-  //             });
-  //
-  //
-  // });
 </script>
 
 
